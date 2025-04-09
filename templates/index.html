@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marriage Function Registration</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url("https://images.unsplash.com/photo-1523528283115-9bf9c30b5997") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .form-container {
+      max-width: 450px;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px 25px;
+      border-radius: 20px;
+      margin: 60px auto;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 26px;
+      color: #333;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    input[type="file"] {
+      background-color: #fff;
+      padding: 10px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin: 10px 0 5px;
+      color: #333;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 16px;
+      color: white;
+      background-color: #ff4081;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #e73370;
+    }
+
+    @media screen and (max-width: 480px) {
+      .form-container {
+        margin: 30px 10px;
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <form method="POST" action="/submit" enctype="multipart/form-data">
+    <h2>Marriage Function Registration</h2>
+
+    <input class="form-control" type="text" name="full_name" placeholder="Full Name" required>
+    <input class="form-control" type="tel" name="phone_number" placeholder="Phone Number" required>
+    <input class="form-control" type="email" name="email" placeholder="Email ID" required>
+
+    <label>Upload Image or Take a Selfie:</label>
+    <input class="form-control" type="file" name="image" accept="image/*" capture="environment" required>
+
+    <button type="button" class="btn" onclick="alert('Use the file upload to take a selfie on mobile!')">Take a Selfie</button>
+    <button type="submit" class="btn">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>

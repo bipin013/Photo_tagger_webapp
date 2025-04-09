@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <style>
+        /* Background Image */
+        body {
+            background: url("{{ url_for('static', filename='background.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container */
+        .form-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        /* Input Fields & Buttons */
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #ff4081;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #e91e63;
+        }
+
+        /* Camera Preview */
+        video {
+            width: 100%;
+            border-radius: 5px;
+            display: none;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            text-align: left;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Marriage Function Registration</h2>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="email" name="email" placeholder="Email ID" required>
+            
+            <label>Upload Image or Take a Selfie:</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+            <button type="button" onclick="openCamera()">Take a Selfie</button>
+            <video id="camera" autoplay></video>
+            <canvas id="canvas" style="display: none;"></canvas>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function openCamera() {
+            let video = document.getElementById("camera");
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    video.srcObject = stream;
+                    video.style.display = "block";
+                })
+                .catch(function (error) {
+                    alert("Camera access denied.");
+                });
+        }
+    </script>
+
+</body>
+</html>
